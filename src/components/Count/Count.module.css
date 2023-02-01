@@ -1,0 +1,33 @@
+.count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    border: 2px solid #61dafb;
+    border-radius: 10px;
+    color: #61dafb;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.text {
+    font-size: 20px;
+    color: #61dafb;
+}
+
+.error {
+    font-size: 20px;
+    color: red;
+}
+
+.red {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    border: 2px solid #61dafb;
+    border-radius: 10px;
+    color: red;
+    font-size: 50px;
+    font-weight: bold;
+}
