@@ -14,7 +14,6 @@ export type ActionType = MaxValueActionType | StartValueActionType
 
 const MAX_VALUE = "MAX-VALUE"
 const START_VALUE = "START-VALUE"
-const SET_COUNTER = "SET-COUNTER"
 
 const initialState: InitialStateType = {
 	maxValue: 0,
@@ -33,8 +32,7 @@ const counterSettingsReducer = (state = initialState, action: ActionType) => {
 				...state,
 				startValue: action.number
 			}
-		// case SET_COUNTER :
-		// 	return {}
+
 		default:
 			return state
 	}

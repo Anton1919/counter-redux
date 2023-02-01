@@ -19,7 +19,6 @@ function App() {
 		dispatch(incrementCounterAC())
 	}
 
-
 	const resetCounter = () => {
 		dispatch(resetCounterAC())
 	}
