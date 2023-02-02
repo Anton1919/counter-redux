@@ -9,7 +9,6 @@ import {getMaxValuesTC, getStartValuesTC, ThunkCounterDispatch} from "./state/se
 
 function App() {
 
-
 	const [error, setError] = useState<null|string>(null  )
 	const [isIncrement, setIsIncrement] = useState<boolean>(false)
 

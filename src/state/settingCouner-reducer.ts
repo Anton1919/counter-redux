@@ -7,6 +7,7 @@ type InitialStateType = {
 	startValue: number
 
 	isSetting: boolean
+
 }
 
 type MaxValueActionType = ReturnType<typeof maxValueAC>

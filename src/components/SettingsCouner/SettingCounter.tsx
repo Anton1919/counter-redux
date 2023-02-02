@@ -4,6 +4,7 @@ import Button from "../Button/Button";
 import ValuesSettings from "./ValuesSetting/ValuesSettings";
 import {maxValueAC, startValueAC} from "../../state/settingCouner-reducer";
 import {useDispatch} from "react-redux";
+import {setCounterAC} from "../../state/counter-reducer";
 
 type PropsType = {
 	isIncrement: boolean
@@ -14,10 +15,13 @@ type PropsType = {
 
 const SettingCounter = ({isIncrement,startValue,maxValue,setIsIncrement}: PropsType) => {
 
-
 	const dispatch = useDispatch()
 
 	const handleClick = () => {
+
+
+
+		dispatch(setCounterAC(startValue))
 
 		setIsIncrement(true)
 
