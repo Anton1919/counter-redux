@@ -12,9 +12,7 @@ const Count = ({value, isIncrement, error, maxValue}: CountType) => {
 
 	const max = value === maxValue && maxValue !== 0 ? s.red : s.count;
 
-	const titleOrNumber = error
-		? <h2 className={s.error}>{error}</h2>
-		: !isIncrement
+	const titleOrNumber = !isIncrement
 			? <h2 className={s.text}>Enter value and press "set"</h2>
 			: value
 

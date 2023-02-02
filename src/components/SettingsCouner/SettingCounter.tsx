@@ -13,13 +13,16 @@ type PropsType = {
 	startValue: number
 }
 
-const SettingCounter = ({isIncrement,startValue,maxValue,setIsIncrement}: PropsType) => {
+const SettingCounter = ({isIncrement, startValue, maxValue, setIsIncrement}: PropsType) => {
 
 	const dispatch = useDispatch()
 
+	const disabled = maxValue === startValue
+		|| maxValue < startValue
+		|| maxValue < 0
+		|| startValue < 0
+
 	const handleClick = () => {
-
-
 
 		dispatch(setCounterAC(startValue))
 
@@ -29,7 +32,7 @@ const SettingCounter = ({isIncrement,startValue,maxValue,setIsIncrement}: PropsT
 		localStorage.setItem("startValue", JSON.stringify(startValue))
 	}
 
-	const setValue = (value: number,name: string) => {
+	const setValue = (value: number, name: string) => {
 		switch (name) {
 			case 'max':
 				dispatch(maxValueAC(value));
@@ -50,7 +53,7 @@ const SettingCounter = ({isIncrement,startValue,maxValue,setIsIncrement}: PropsT
 			/>
 
 			<div className={s.wrapper}>
-				<Button title={'set'} callback={handleClick} disabled={isIncrement}/>
+				<Button title={'set'} callback={handleClick} disabled={disabled}/>
 			</div>
 		</div>
 	);
