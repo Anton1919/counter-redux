@@ -7,10 +7,10 @@ type ButtonType = {
 	disabled: boolean
 }
 
-const Button = ({title, disabled,callback}: ButtonType) => {
+const Button = ({title, disabled, callback}: ButtonType) => {
 	return (
 		<div>
-			<button className={disabled ? s.opacity : s.button } disabled={disabled} onClick={callback}>{title}</button>
+			<button className={disabled ? s.opacity : s.button} disabled={disabled} onClick={callback}>{title}</button>
 		</div>
 	);
 };

@@ -4,12 +4,11 @@ import s from './Count.module.css'
 type CountType = {
 	value: number
 	maxValue: number
-	error: null | string
 	isIncrement: boolean
 	startValue: number
 }
 
-const Count = ({value, startValue, isIncrement, error, maxValue}: CountType) => {
+const Count = ({value, startValue, isIncrement, maxValue}: CountType) => {
 
 	const max = value === maxValue && maxValue !== 0 ? s.red : s.count;
 

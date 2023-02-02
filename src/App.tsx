@@ -2,19 +2,22 @@ import React, {useEffect, useState} from 'react';
 import './App.css';
 import Counter from "./components/Counter/Counter";
 import SettingCounter from "./components/SettingsCouner/SettingCounter";
-import {incrementCounterAC, resetCounterAC} from "./state/counter-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType,} from "./state/store";
-import {getMaxValuesTC, getStartValuesTC, ThunkCounterDispatch} from "./state/settingCouner-reducer";
+import {
+	getMaxValuesTC,
+	getStartValuesTC,
+	incrementCounterAC, resetCounterAC,
+	ThunkCounterDispatch
+} from "./state/settingCouner-reducer";
 
 function App() {
 
-	const [error, setError] = useState<null|string>(null  )
 	const [isIncrement, setIsIncrement] = useState<boolean>(false)
 
-	const value = useSelector<RootStateType, number>(state => state.counter.value)
-	const startValue = useSelector<RootStateType, number> (state => state.counterSettings.startValue)
-	const maxValue = useSelector<RootStateType, number> (state => state.counterSettings.maxValue)
+	const value = useSelector<RootStateType, number>(state => state.counterSettings.value)
+	const startValue = useSelector<RootStateType, number>(state => state.counterSettings.startValue)
+	const maxValue = useSelector<RootStateType, number>(state => state.counterSettings.maxValue)
 
 	const dispatch: ThunkCounterDispatch = useDispatch()
 
@@ -31,13 +34,11 @@ function App() {
 		dispatch(getStartValuesTC())
 	}, [dispatch])
 
-
 	return (
 		<div className="App">
 			<Counter
 				maxValue={maxValue}
 				startValue={startValue}
-				error={error}
 				isIncrement={isIncrement}
 				increment={incrementCounter}
 				reset={resetCounter}

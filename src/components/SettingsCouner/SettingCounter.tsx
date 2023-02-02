@@ -2,9 +2,8 @@ import React from 'react';
 import s from './SettingCounter.module.css'
 import Button from "../Button/Button";
 import ValuesSettings from "./ValuesSetting/ValuesSettings";
-import {maxValueAC, startValueAC} from "../../state/settingCouner-reducer";
+import {maxValueAC, setCounterAC, startValueAC} from "../../state/settingCouner-reducer";
 import {useDispatch} from "react-redux";
-import {setCounterAC} from "../../state/counter-reducer";
 
 type PropsType = {
 	isIncrement: boolean
@@ -13,7 +12,7 @@ type PropsType = {
 	startValue: number
 }
 
-const SettingCounter = ({isIncrement, startValue, maxValue, setIsIncrement}: PropsType) => {
+const SettingCounter = ({startValue, maxValue, setIsIncrement}: PropsType) => {
 
 	const dispatch = useDispatch()
 
@@ -25,7 +24,6 @@ const SettingCounter = ({isIncrement, startValue, maxValue, setIsIncrement}: Pro
 	const handleClick = () => {
 
 		dispatch(setCounterAC(startValue))
-
 		setIsIncrement(true)
 
 		localStorage.setItem("maxValue", JSON.stringify(maxValue))

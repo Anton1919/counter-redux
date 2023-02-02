@@ -9,15 +9,14 @@ type CounterType = {
 	startValue: number
 	increment: () => void
 	reset: () => void
-	error: null | string
 	isIncrement: boolean
 
 }
 
-const Counter = ({increment, startValue,error,isIncrement,maxValue, reset, value}: CounterType) => {
+const Counter = ({increment, startValue, isIncrement, maxValue, reset, value}: CounterType) => {
 	return (
 		<div className={s.counter}>
-			<Count error={error} startValue={startValue} isIncrement={isIncrement} value={value} maxValue={maxValue}/>
+			<Count startValue={startValue} isIncrement={isIncrement} value={value} maxValue={maxValue}/>
 
 			<div className={s.wrapper}>
 				<Button title={'incr'} callback={increment} disabled={value === maxValue || !isIncrement}/>
