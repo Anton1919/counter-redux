@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Counter.module.css'
-import Count from "../Count/Count";
+import Count from "./Count/Count";
 import Button from "../Button/Button";
 
 type CounterType = {
@@ -10,7 +10,6 @@ type CounterType = {
 	increment: () => void
 	reset: () => void
 	isIncrement: boolean
-
 }
 
 const Counter = ({increment, startValue, isIncrement, maxValue, reset, value}: CounterType) => {

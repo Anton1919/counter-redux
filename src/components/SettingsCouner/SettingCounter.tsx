@@ -12,7 +12,7 @@ type PropsType = {
 	startValue: number
 }
 
-const SettingCounter = ({startValue, maxValue, setIsIncrement}: PropsType) => {
+const SettingCounter =({startValue, maxValue, setIsIncrement}: PropsType) => {
 
 	const dispatch = useDispatch()
 
@@ -49,12 +49,11 @@ const SettingCounter = ({startValue, maxValue, setIsIncrement}: PropsType) => {
 				setIsIncrement={setIsIncrement}
 				setValue={setValue}
 			/>
-
 			<div className={s.wrapper}>
 				<Button title={'set'} callback={handleClick} disabled={disabled}/>
 			</div>
 		</div>
 	);
-};
+}
 
 export default SettingCounter;

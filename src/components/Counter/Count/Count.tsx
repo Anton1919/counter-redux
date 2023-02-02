@@ -26,7 +26,6 @@ const Count = ({value, startValue, isIncrement, maxValue}: CountType) => {
 	return (
 		<div className={max}>{titleOrNumber}</div>
 	);
-
 };
 
 export default Count;

@@ -7,7 +7,8 @@ import {RootStateType,} from "./state/store";
 import {
 	getMaxValuesTC,
 	getStartValuesTC,
-	incrementCounterAC, resetCounterAC,
+	incrementCounterAC,
+	resetCounterAC,
 	ThunkCounterDispatch
 } from "./state/settingCouner-reducer";
 

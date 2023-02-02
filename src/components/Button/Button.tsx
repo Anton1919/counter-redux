@@ -8,6 +8,7 @@ type ButtonType = {
 }
 
 const Button = ({title, disabled, callback}: ButtonType) => {
+
 	return (
 		<div>
 			<button className={disabled ? s.opacity : s.button} disabled={disabled} onClick={callback}>{title}</button>
