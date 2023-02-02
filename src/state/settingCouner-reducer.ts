@@ -5,10 +5,13 @@ import {AnyAction} from "redux";
 type InitialStateType = {
 	maxValue: number
 	startValue: number
+
+	isSetting: boolean
 }
 
 type MaxValueActionType = ReturnType<typeof maxValueAC>
 type StartValueActionType = ReturnType<typeof startValueAC>
+
 
 export type ActionType = MaxValueActionType | StartValueActionType
 
@@ -17,7 +20,9 @@ const START_VALUE = "START-VALUE"
 
 const initialState: InitialStateType = {
 	maxValue: 0,
-	startValue: 0
+	startValue: 0,
+
+	isSetting: false
 }
 
 const counterSettingsReducer = (state = initialState, action: ActionType) => {
@@ -40,11 +45,12 @@ const counterSettingsReducer = (state = initialState, action: ActionType) => {
 
 export const maxValueAC = (num: number) => ({
 	type: MAX_VALUE, number: num
-})
+} as const)
 
 export const startValueAC = (num: number) => ({
 	type: START_VALUE, number: num
 } as const)
+
 
 export type ThunkType = ThunkAction<void, RootStateType, unknown, ActionType>
 export type ThunkCounterDispatch = ThunkDispatch<RootStateType, unknown, AnyAction>

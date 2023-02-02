@@ -25,7 +25,7 @@ const counterReducer = (state = initialState, action: ActionType): StateType => 
 		case RESET_COUNTER:
 			return {
 				...state,
-				value: state.value = 0
+				value: state.value = action.value
 			}
 		case SET_COUNTER:
 			return {
@@ -39,7 +39,7 @@ const counterReducer = (state = initialState, action: ActionType): StateType => 
 }
 
 export const incrementCounterAC = () => ({type: INCREMENT_COUNTER} as const)
-export const resetCounterAC = () => ({type: RESET_COUNTER} as const)
+export const resetCounterAC = (value: number) => ({type: RESET_COUNTER, value} as const)
 export const setCounterAC = (value: number) => ({type: SET_COUNTER, value} as const)
 
 export default counterReducer

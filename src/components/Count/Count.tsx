@@ -3,14 +3,25 @@ import s from './Count.module.css'
 
 type CountType = {
 	value: number
+	maxValue: number
+	error: null | string
+	isIncrement: boolean
 }
 
-const Count = ({value} : CountType) => {
+const Count = ({value, isIncrement, error, maxValue}: CountType) => {
+
+	const max = value === maxValue && maxValue !== 0 ? s.red : s.count;
+
+	const titleOrNumber = error
+		? <h2 className={s.error}>{error}</h2>
+		: !isIncrement
+			? <h2 className={s.text}>Enter value and press "set"</h2>
+			: value
+
 	return (
-		<div className={s.count}>
-			<h2 className={s.text}>{value}</h2>
-		</div>
+		<div className={max}>{titleOrNumber}</div>
 	);
+
 };
 
 export default Count;

@@ -1,31 +1,33 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import s from './ValuesSettings.module.css'
 
 type PropsType = {
 	maxValue: number
 	startValue: number
-	setMaxValue: (num: number) => void
-	setStartValue: (num: number) => void
+	setValue: (value: number,name: string) => void
+	setIsIncrement: (value: boolean) => void
 }
 
-const ValuesSettings = ({maxValue, setStartValue, startValue, setMaxValue}: PropsType) => {
+const ValuesSettings = ({maxValue, setIsIncrement, setValue, startValue}: PropsType) => {
 
+	const classInputError = maxValue === startValue
+		&& maxValue !== 0
+		&& startValue !== 0
+		|| maxValue < 0
+		|| startValue < 0
+		|| maxValue < startValue
 
-	const changeMaxHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		setMaxValue(+e.currentTarget.value)
-	}
-
-	const changeStartHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		setStartValue(+e.currentTarget.value)
+	const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+		setValue(+e.currentTarget.value, e.currentTarget.name)
 	}
 
 	return (
 		<div className={s.valueSettings}>
 			<div className={s.text}>max value:
-				<input className={s.input} type="number" value={maxValue} onChange={changeMaxHandler}/>
+				<input name={'max'} className={classInputError ? s.error : s.input} type="number" value={maxValue} onChange={changeHandler}/>
 			</div>
 			<div className={s.text}>start value:
-				<input className={s.input} type="number" value={startValue} onChange={changeStartHandler}/>
+				<input name={'start'} className={classInputError ? s.error : s.input} type="number" value={startValue} onChange={changeHandler}/>
 			</div>
 		</div>
 	);

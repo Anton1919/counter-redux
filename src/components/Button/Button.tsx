@@ -4,12 +4,13 @@ import s from './Button.module.css'
 type ButtonType = {
 	title: string
 	callback: () => void
+	disabled: boolean
 }
 
-const Button = ({title, callback}: ButtonType) => {
+const Button = ({title, disabled,callback}: ButtonType) => {
 	return (
 		<div>
-			<button className={ s.button } onClick={callback}>{title}</button>
+			<button className={disabled ? s.opacity : s.button } disabled={disabled} onClick={callback}>{title}</button>
 		</div>
 	);
 };

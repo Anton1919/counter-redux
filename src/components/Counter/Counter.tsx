@@ -5,18 +5,21 @@ import Button from "../Button/Button";
 
 type CounterType = {
 	value: number
+	maxValue: number
 	increment: () => void
 	reset: () => void
+	error: null | string
+	isIncrement: boolean
 }
 
-const Counter = ({increment, reset, value}: CounterType) => {
+const Counter = ({increment, error,isIncrement,maxValue, reset, value}: CounterType) => {
 	return (
 		<div className={s.counter}>
-			<Count value={value}/>
+			<Count error={error} isIncrement={isIncrement} value={value} maxValue={maxValue}/>
 
 			<div className={s.wrapper}>
-				<Button title={'incr'} callback={increment}/>
-				<Button title={'reset'} callback={reset}/>
+				<Button title={'incr'} callback={increment} disabled={value === maxValue || !isIncrement}/>
+				<Button title={'reset'} callback={reset} disabled={value < maxValue || !isIncrement}/>
 			</div>
 
 		</div>

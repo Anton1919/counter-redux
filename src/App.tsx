@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import Counter from "./components/Counter/Counter";
 import SettingCounter from "./components/SettingsCouner/SettingCounter";
@@ -9,30 +9,44 @@ import {getMaxValuesTC, getStartValuesTC, ThunkCounterDispatch} from "./state/se
 
 function App() {
 
+
+	const [error, setError] = useState<null|string>(null  )
+	const [isIncrement, setIsIncrement] = useState<boolean>(false)
+
 	const value = useSelector<RootStateType, number>(state => state.counter.value)
+	const startValue = useSelector<RootStateType, number> (state => state.counterSettings.startValue)
+	const maxValue = useSelector<RootStateType, number> (state => state.counterSettings.maxValue)
+
 	const dispatch: ThunkCounterDispatch = useDispatch()
 
 	const incrementCounter = () => {
-		/*	if() { //max === count
-				alert('error')
-			}*/
 		dispatch(incrementCounterAC())
 	}
 
 	const resetCounter = () => {
-		dispatch(resetCounterAC())
+		dispatch(resetCounterAC(startValue))
 	}
 
 	useEffect(() => {
 		dispatch(getMaxValuesTC())
 		dispatch(getStartValuesTC())
-	}, [])
+	}, [dispatch])
 
 
 	return (
 		<div className="App">
-			<Counter increment={incrementCounter} reset={resetCounter} value={value}/>
-			<SettingCounter/>
+			<Counter
+				error={error}
+				isIncrement={isIncrement}
+				increment={incrementCounter}
+				reset={resetCounter} maxValue={maxValue}
+				value={value}
+			/>
+			<SettingCounter
+				maxValue={maxValue}
+				startValue={startValue}
+				isIncrement={isIncrement}
+				setIsIncrement={setIsIncrement}/>
 		</div>
 	);
 }
