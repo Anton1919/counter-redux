@@ -35,10 +35,12 @@ function App() {
 	return (
 		<div className="App">
 			<Counter
+				maxValue={maxValue}
+				startValue={startValue}
 				error={error}
 				isIncrement={isIncrement}
 				increment={incrementCounter}
-				reset={resetCounter} maxValue={maxValue}
+				reset={resetCounter}
 				value={value}
 			/>
 			<SettingCounter
