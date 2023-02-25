@@ -1,7 +1,3 @@
-import {ThunkAction, ThunkDispatch} from "redux-thunk";
-import {RootStateType} from "./store";
-import {AnyAction} from "redux";
-
 type InitialStateType = {
 	maxValue: number
 	startValue: number
@@ -74,26 +70,5 @@ export const startValueAC = (num: number) => ({type: START_VALUE, number: num} a
 export const incrementCounterAC = () => ({type: INCREMENT_COUNTER} as const)
 export const resetCounterAC = (value: number) => ({type: RESET_COUNTER, value} as const)
 export const setCounterAC = (value: number) => ({type: SET_COUNTER, value} as const)
-
-export type ThunkType = ThunkAction<void, RootStateType, unknown, ActionType>
-export type ThunkCounterDispatch = ThunkDispatch<RootStateType, unknown, AnyAction>
-
-export const getMaxValuesTC = (): ThunkType =>
-	(dispatch: ThunkCounterDispatch) => {
-		let maxValueAsString = localStorage.getItem("maxValue")
-		if (maxValueAsString) {
-			let newValue = JSON.parse(maxValueAsString)
-			dispatch(maxValueAC(newValue))
-		}
-	}
-
-export const getStartValuesTC = (): ThunkType =>
-	(dispatch: ThunkCounterDispatch) => {
-		let startValueAsString = localStorage.getItem("startValue")
-		if (startValueAsString) {
-			let newValue = JSON.parse(startValueAsString)
-			dispatch(startValueAC(newValue))
-		}
-	}
 
 export default counterSettingsReducer

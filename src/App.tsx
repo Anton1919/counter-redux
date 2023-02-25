@@ -1,16 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Counter from "./components/Counter/Counter";
 import SettingCounter from "./components/SettingsCouner/SettingCounter";
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType,} from "./state/store";
-import {
-	getMaxValuesTC,
-	getStartValuesTC,
-	incrementCounterAC,
-	resetCounterAC,
-	ThunkCounterDispatch
-} from "./state/settingCouner-reducer";
+import {incrementCounterAC, resetCounterAC} from "./state/settingCouner-reducer";
 
 function App() {
 
@@ -20,7 +14,7 @@ function App() {
 	const startValue = useSelector<RootStateType, number>(state => state.counterSettings.startValue)
 	const maxValue = useSelector<RootStateType, number>(state => state.counterSettings.maxValue)
 
-	const dispatch: ThunkCounterDispatch = useDispatch()
+	const dispatch = useDispatch()
 
 	const incrementCounter = () => {
 		dispatch(incrementCounterAC())
@@ -30,10 +24,6 @@ function App() {
 		dispatch(resetCounterAC(startValue))
 	}
 
-	useEffect(() => {
-		dispatch(getMaxValuesTC())
-		dispatch(getStartValuesTC())
-	}, [dispatch])
 
 	return (
 		<div className="App">
