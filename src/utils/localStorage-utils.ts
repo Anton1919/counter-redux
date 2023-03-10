@@ -9,7 +9,6 @@ export const loadState = () => {
 }
 
 export const saveState = (state: RootStateType) => {
-
 	const serializedState = JSON.stringify(state)
 	localStorage.setItem("app-state", serializedState)
 }
