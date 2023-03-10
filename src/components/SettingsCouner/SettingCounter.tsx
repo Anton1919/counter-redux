@@ -12,19 +12,19 @@ type PropsType = {
 	startValue: number
 }
 
-const SettingCounter =({startValue, maxValue, setIsIncrement}: PropsType) => {
+const SettingCounter =({startValue, isIncrement, maxValue, setIsIncrement}: PropsType) => {
 
 	const dispatch = useDispatch()
 
-	const disabled = maxValue === startValue
+	const disabled = !isIncrement || maxValue === startValue
 		|| maxValue < startValue
 		|| maxValue < 0
 		|| startValue < 0
 
 	const handleClick = () => {
 
+		setIsIncrement(false)
 		dispatch(setCounterAC(startValue))
-		setIsIncrement(true)
 
 		localStorage.setItem("maxValue", JSON.stringify(maxValue))
 		localStorage.setItem("startValue", JSON.stringify(startValue))

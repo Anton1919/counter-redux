@@ -18,7 +18,7 @@ const ValuesSettings = ({maxValue, setIsIncrement, setValue, startValue}: PropsT
 		|| maxValue < startValue
 
 	const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-		setIsIncrement(false)
+		setIsIncrement(true)
 		setValue(+e.currentTarget.value, e.currentTarget.name)
 	}
 

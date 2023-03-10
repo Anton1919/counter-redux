@@ -18,8 +18,8 @@ const Counter = ({increment, startValue, isIncrement, maxValue, reset, value}: C
 			<Count startValue={startValue} isIncrement={isIncrement} value={value} maxValue={maxValue}/>
 
 			<div className={s.wrapper}>
-				<Button title={'incr'} callback={increment} disabled={value === maxValue || !isIncrement}/>
-				<Button title={'reset'} callback={reset} disabled={value < maxValue || !isIncrement}/>
+				<Button title={'incr'} callback={increment} disabled={value === maxValue || isIncrement}/>
+				<Button title={'reset'} callback={reset} disabled={value === 0 || value < maxValue || isIncrement}/>
 			</div>
 
 		</div>
