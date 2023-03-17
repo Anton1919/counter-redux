@@ -9,7 +9,6 @@ type PropsType = {
 }
 
 const ValuesSettings = ({maxValue, setIsIncrement, setValue, startValue}: PropsType) => {
-
 	const classInputError = maxValue === startValue
 		&& maxValue !== 0
 		&& startValue !== 0
